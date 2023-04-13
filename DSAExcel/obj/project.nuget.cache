@@ -1,0 +1,29 @@
+{
+  "version": 2,
+  "dgSpecHash": "1VqhYoXwUv971mQYQp9kOakOujPKvlkuIQP/xqEIoLdFss0UE4IuFB2/qFVXymjAumrX8W8BMdvB3kEVDv1Kiw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\AkSharma\\source\\repos\\DSAExcel\\DSAExcel\\DSAExcel.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\AkSharma\\.nuget\\packages\\linqtoexcel\\1.11.0\\linqtoexcel.1.11.0.nupkg.sha512",
+    "C:\\Users\\AkSharma\\.nuget\\packages\\microsoft.win32.systemevents\\7.0.0\\microsoft.win32.systemevents.7.0.0.nupkg.sha512",
+    "C:\\Users\\AkSharma\\.nuget\\packages\\system.configuration.configurationmanager\\7.0.0\\system.configuration.configurationmanager.7.0.0.nupkg.sha512",
+    "C:\\Users\\AkSharma\\.nuget\\packages\\system.data.oledb\\7.0.0\\system.data.oledb.7.0.0.nupkg.sha512",
+    "C:\\Users\\AkSharma\\.nuget\\packages\\system.diagnostics.performancecounter\\7.0.0\\system.diagnostics.performancecounter.7.0.0.nupkg.sha512",
+    "C:\\Users\\AkSharma\\.nuget\\packages\\system.drawing.common\\7.0.0\\system.drawing.common.7.0.0.nupkg.sha512",
+    "C:\\Users\\AkSharma\\.nuget\\packages\\system.security.cryptography.protecteddata\\7.0.0\\system.security.cryptography.protecteddata.7.0.0.nupkg.sha512",
+    "C:\\Users\\AkSharma\\.nuget\\packages\\system.security.permissions\\7.0.0\\system.security.permissions.7.0.0.nupkg.sha512",
+    "C:\\Users\\AkSharma\\.nuget\\packages\\system.windows.extensions\\7.0.0\\system.windows.extensions.7.0.0.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'LinqToExcel 1.11.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
+      "libraryId": "LinqToExcel",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    }
+  ]
+}
