@@ -27,7 +27,7 @@ namespace DSAExcel.Array
             Stopwatch stopwatch = Stopwatch.StartNew();
             for (int i = 0; i < arr.Length; i++)
             {
-                Console.WriteLine("Id: {0}\tFirstName: {1}\tLastName: {2}\tAge: {3}\tContact: {4}\tCity: {5}\tState: {6}\n", arr[i].id, arr[i].firstName, arr[i].lastName, arr[i].age, arr[i].contact, arr[i].city, arr[i].state);
+                //Console.WriteLine("Id: {0}\tFirstName: {1}\tLastName: {2}\tAge: {3}\tContact: {4}\tCity: {5}\tState: {6}\n", arr[i].id, arr[i].firstName, arr[i].lastName, arr[i].age, arr[i].contact, arr[i].city, arr[i].state);
             }
             stopwatch.Stop();
             TimeSpan iterationTime = stopwatch.Elapsed;
@@ -41,9 +41,8 @@ namespace DSAExcel.Array
             arr[j] = temp;
         }
 
-        internal void BubbleSort() //On basis of Age
+        private void BubbleSort() //On basis of Age
         {
-            Stopwatch stopwatch = Stopwatch.StartNew();
             for (int i = 0; i < rows; i++)
             {
                 for (int j = 1; j < rows - i; j++)
@@ -54,20 +53,16 @@ namespace DSAExcel.Array
                     }
                 }
             }
-            stopwatch.Stop();
-            TimeSpan bubbleSortTime = stopwatch.Elapsed;
-            Console.WriteLine("Time taken to BubbleSort array: {0} seconds", bubbleSortTime.TotalSeconds);
         }
 
-        internal void QuickSort(int leftIndex, int rightIndex) //Onbasis of Last Name
+        private void QuickSort(int left, int right) //Onbasis of Last Name
         {
-            if (leftIndex < rightIndex)
+            if (left < right)
             {
-                int pivot = Pivot(leftIndex, rightIndex);
-                QuickSort(leftIndex, pivot - 1);
-                QuickSort(pivot + 1, rightIndex);
+                int pivot = Pivot(left, right);
+                QuickSort(left, pivot - 1);
+                QuickSort(pivot + 1, right);
             }
-            
         }
         private int Pivot(int left, int right)
         {
@@ -89,9 +84,8 @@ namespace DSAExcel.Array
             return (i + 1);
         }
 
-        internal void InsertionSort() //On basis of First Name
+        private void InsertionSort() //On basis of First Name
         {
-            Stopwatch stopwatch = Stopwatch.StartNew();
             for (int i = 1; i < arr.Length; i++)
             {
                 Person temp = arr[i];
@@ -103,12 +97,9 @@ namespace DSAExcel.Array
                 }
                 arr[prev + 1] = temp;
             }
-            stopwatch.Stop();
-            TimeSpan InsertionSortTime = stopwatch.Elapsed;
-            Console.WriteLine("Time taken to InsertionSort array: {0} seconds", InsertionSortTime.TotalSeconds);
         }
 
-        internal void MergeSort(int left, int right) // On basis of State
+        private void MergeSort(int left, int right) // On basis of State
         {
             if (right <= left)
                 return;
@@ -123,31 +114,62 @@ namespace DSAExcel.Array
         {
             int leftLength = mid - left + 1;
             int rightLength = right - mid;
-            var leftTempArray = new Person[leftLength];
-            var rightTempArray = new Person[rightLength];
+            Person[] leftArr = new Person[leftLength];
+            Person[] rightArr = new Person[rightLength];
             int i, j;
 
             for (i = 0; i < leftLength; i++)
-                leftTempArray[i] = arr[i + left];
+                leftArr[i] = arr[i + left];
             for (j = 0; j < rightLength; j++)
-                rightTempArray[j] = arr[mid + 1 + j];
+                rightArr[j] = arr[mid + 1 + j];
             i = 0; j = 0;
             int k = left;
 
             while (i < leftLength && j < rightLength)
             {
-                if (leftTempArray[i]?.state?.CompareTo(rightTempArray[j].state) <= 0)
-                    arr[k++] = leftTempArray[i++];
+                if (leftArr[i]?.state?.CompareTo(rightArr[j].state) <= 0)
+                    arr[k++] = leftArr[i++];
                 else
-                    arr[k++] = rightTempArray[j++];
+                    arr[k++] = rightArr[j++];
             }
 
             while (i < leftLength)
-                arr[k++] = leftTempArray[i++];
+                arr[k++] = leftArr[i++];
             while (j < rightLength)
-                arr[k++] = rightTempArray[j++];
+                arr[k++] = rightArr[j++];
 
             return;
+        }
+
+        internal void CalculateAndDisplaySortTime()
+        {
+            Console.WriteLine();
+
+            Stopwatch stopwatch = Stopwatch.StartNew();
+            BubbleSort();
+            stopwatch.Stop();
+            TimeSpan bubbleSortTime = stopwatch.Elapsed;
+            Console.WriteLine("Time taken to bubbleSort array: {0} seconds", bubbleSortTime.TotalSeconds);
+            Console.WriteLine();
+
+            stopwatch = Stopwatch.StartNew();
+            QuickSort(0, arr.Length - 1);
+            stopwatch.Stop();
+            TimeSpan quickSortTime = stopwatch.Elapsed;
+            Console.WriteLine("Time taken to QuickSort array: {0} seconds", quickSortTime.TotalSeconds);
+            Console.WriteLine();
+
+            stopwatch = Stopwatch.StartNew();
+            MergeSort(0, arr.Length - 1);
+            TimeSpan mergeSortTime = stopwatch.Elapsed;
+            Console.WriteLine("Time taken to MergeSort array: {0} seconds", mergeSortTime.TotalSeconds);
+            Console.WriteLine();
+
+            stopwatch = Stopwatch.StartNew();
+            InsertionSort();
+            TimeSpan insertionSortTime = stopwatch.Elapsed;
+            Console.WriteLine("Time taken to InsertionSort array: {0} seconds", insertionSortTime.TotalSeconds);
+            Console.WriteLine();
         }
     }
 }

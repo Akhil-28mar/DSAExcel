@@ -34,11 +34,13 @@ namespace DSA
                     arr.DisplayAllData();
                     return isSuccessful;
                 case 3:
-                    CustomLinkedList list = CustomLinkedList.LoadData();
+                    CustomLinkedList list = new CustomLinkedList();
+                    list.LoadData();
                     list.DisplayAllData();
                     return isSuccessful;
                 case 4:
-                    DoublyLinkedList doublyList = DoublyLinkedList.LoadData();
+                    DoublyLinkedList doublyList = new DoublyLinkedList();
+                    doublyList.LoadData();
                     doublyList.DisplayAllDataInReverse();
                     doublyList.DisplayAllData();
                     return isSuccessful;
@@ -77,33 +79,18 @@ namespace DSA
 
             CustomArray customArray = new CustomArray();
             customArray.LoadData();
+            customArray.DisplayAllData();
+            customArray.CalculateAndDisplaySortTime();
 
-            customArray.BubbleSort();
-            //customArray.DisplayAllData();
-            //Console.ReadKey();
-            Console.WriteLine();
+            CustomLinkedList list = new CustomLinkedList();
+            list.LoadData();
+            list.CalculateAndDisplaySortTime();
+            list.DisplayAllData();
 
-            Stopwatch stopwatch = Stopwatch.StartNew();
-            customArray.QuickSort(0, 59999);
-            stopwatch.Stop();
-            TimeSpan QuickSortTime = stopwatch.Elapsed;
-            Console.WriteLine("Time taken to QuickSort array: {0} seconds", QuickSortTime.TotalSeconds);
-            //customArray.DisplayAllData();
-            //Console.ReadKey();
-            Console.WriteLine();
-
-            stopwatch = Stopwatch.StartNew();
-            customArray.MergeSort(0, 59999);
-            TimeSpan MergeSortTime = stopwatch.Elapsed;
-            Console.WriteLine("Time taken to MergeSort array: {0} seconds", MergeSortTime.TotalSeconds);
-            //customArray.DisplayAllData();
-            //Console.ReadKey();
-            Console.WriteLine();
-
-            customArray.InsertionSort();
-            //customArray.DisplayAllData();
-            //Console.ReadKey();
-            Console.WriteLine();
+            DoublyLinkedList doublyLinkedList = new DoublyLinkedList();
+            doublyLinkedList.LoadData();
+            doublyLinkedList.CalculateAndDisplaySortTime();
+            doublyLinkedList.DisplayAllData();
         }
     }
 }
