@@ -12,14 +12,14 @@ namespace DSAExcel.Array
             int currentRow = 0;
             List<Person> sheet = ExcelReader.ExcelReader.GetDataFromExcel();
             Stopwatch stopwatch = Stopwatch.StartNew();
-            foreach(Person data in sheet)
+            foreach (Person data in sheet)
             {
                 arr[currentRow] = data;
                 currentRow++;
             }
             stopwatch.Stop();
-            TimeSpan timeToLoadData = stopwatch.Elapsed;
-            Console.WriteLine("Time taken to Load Data to Array: {0} seconds", timeToLoadData.TotalSeconds);
+            TimeSpan loadingTime = stopwatch.Elapsed;
+            Console.WriteLine("Time taken to load data to Array: {0} seconds", loadingTime.TotalSeconds);
         }
 
         internal void DisplayAllData()
@@ -145,11 +145,7 @@ namespace DSAExcel.Array
         {
             Stopwatch stopwatch;
 
-            stopwatch = Stopwatch.StartNew();
             LoadData();
-            stopwatch.Stop();
-            TimeSpan loadingTime = stopwatch.Elapsed;
-            Console.WriteLine("Time taken to load data to Array: {0} seconds", loadingTime.TotalSeconds);
             Console.WriteLine();
 
             stopwatch = Stopwatch.StartNew();

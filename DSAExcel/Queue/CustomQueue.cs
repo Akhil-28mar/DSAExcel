@@ -57,10 +57,14 @@ namespace DSAExcel.Queue
         private void LoadData()
         {
             List<Person> list = ExcelReader.ExcelReader.GetDataFromExcel();
+            Stopwatch stopwatch = Stopwatch.StartNew();
             foreach (Person data in list)
             {
                 Enqueue(data);
             }
+            stopwatch.Stop();
+            TimeSpan loadingTime = stopwatch.Elapsed;
+            Console.WriteLine("Time taken to load data to queue: {0} seconds", loadingTime.TotalSeconds);
         }
 
         internal void DisplayAllData()
@@ -76,11 +80,7 @@ namespace DSAExcel.Queue
         {
             Stopwatch stopwatch;
 
-            stopwatch = Stopwatch.StartNew();
             LoadData();
-            stopwatch.Stop();
-            TimeSpan loadingTime = stopwatch.Elapsed;
-            Console.WriteLine("Time taken to load data to queue: {0} seconds",loadingTime.TotalSeconds);
             Console.WriteLine();
 
             stopwatch= Stopwatch.StartNew();

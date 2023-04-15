@@ -60,11 +60,7 @@ namespace DSAExcel.Stack
             Console.WriteLine();
             Stopwatch stopwatch;
 
-            stopwatch = Stopwatch.StartNew();
             LoadData();
-            stopwatch.Stop();
-            TimeSpan loadingTime = stopwatch.Elapsed;
-            Console.WriteLine("Time taken to load data to Stack: {0} seconds", loadingTime.TotalSeconds);
             Console.WriteLine();
 
             stopwatch = Stopwatch.StartNew();
