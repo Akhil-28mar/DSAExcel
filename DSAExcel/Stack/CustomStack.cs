@@ -57,6 +57,7 @@ namespace DSAExcel.Stack
 
         internal void CalculateAndDisplaySortTime()
         {
+            Console.WriteLine();
             Stopwatch stopwatch;
 
             stopwatch = Stopwatch.StartNew();
@@ -64,32 +65,35 @@ namespace DSAExcel.Stack
             stopwatch.Stop();
             TimeSpan loadingTime = stopwatch.Elapsed;
             Console.WriteLine("Time taken to load data to Stack: {0} seconds", loadingTime.TotalSeconds);
+            Console.WriteLine();
 
             stopwatch = Stopwatch.StartNew();
             BubbleSort();
             stopwatch.Stop();
             TimeSpan bubbleSortTime = stopwatch.Elapsed;
             Console.WriteLine("Time Taken To BubbleSort Stack: {0} seconds", bubbleSortTime.TotalSeconds);
+            Console.WriteLine();
 
             stopwatch = Stopwatch.StartNew();
             InsertionSort();
             stopwatch.Stop();
             TimeSpan insertionSortTime = stopwatch.Elapsed;
             Console.WriteLine("Time Taken To InsertionSort Stack: {0} seconds", insertionSortTime.TotalSeconds);
+            Console.WriteLine();
 
             stopwatch = Stopwatch.StartNew();
             CustomStack sorted = MergeSort();
             stopwatch.Stop();
-            sorted.DisplayAllData();
             TimeSpan mergeSortTime = stopwatch.Elapsed;
             Console.WriteLine("Time Taken To mergeSort Stack: {0} seconds", mergeSortTime.TotalSeconds);
+            Console.WriteLine();
 
             stopwatch = Stopwatch.StartNew();
             CustomStack quickSorted = QuickSort();
             stopwatch.Stop();
-            quickSorted.DisplayAllData();
             TimeSpan quickSortTime = stopwatch.Elapsed;
             Console.WriteLine("Time Taken To quickSort Stack: {0} seconds", quickSortTime.TotalSeconds);
+            Console.WriteLine("-----------------------------------------------------------------------------------");
         }
 
         internal void BubbleSort() //On basis of Age

@@ -81,31 +81,35 @@ namespace DSAExcel.Queue
             stopwatch.Stop();
             TimeSpan loadingTime = stopwatch.Elapsed;
             Console.WriteLine("Time taken to load data to queue: {0} seconds",loadingTime.TotalSeconds);
+            Console.WriteLine();
 
             stopwatch= Stopwatch.StartNew();
             BubbleSort();
             stopwatch.Stop();
             TimeSpan bubbleTime= stopwatch.Elapsed;
             Console.WriteLine("Time taken to bubblesort queue: {0} seconds", bubbleTime.TotalSeconds);
+            Console.WriteLine() ;
 
             stopwatch = Stopwatch.StartNew();
             CustomQueue sorted = QuickSort();
             stopwatch.Stop();
-            sorted.DisplayAllData();
             TimeSpan quickSortTime = stopwatch.Elapsed;
             Console.WriteLine("Time Taken To QuickSort Queue: {0} seconds", quickSortTime.TotalSeconds);
+            Console.WriteLine();
 
             stopwatch = Stopwatch.StartNew();
             CustomQueue mergeSorted = MergeSort();
             stopwatch.Stop();
             TimeSpan mergeSortTime = stopwatch.Elapsed;
             Console.WriteLine("Time Taken To MergeSort Queue: {0} seconds", mergeSortTime.TotalSeconds);
+            Console.WriteLine();
 
             stopwatch = Stopwatch.StartNew();
             CustomQueue insertionSorted = InsertionSort();
             stopwatch.Stop();
             TimeSpan insertionSortedTime = stopwatch.Elapsed;
             Console.WriteLine("Time Taken To InsertionSort Queue: {0} seconds", insertionSortedTime.TotalSeconds);
+            Console.WriteLine("-----------------------------------------------------------------------------------");
         }
 
         private void BubbleSort() //On basis of City

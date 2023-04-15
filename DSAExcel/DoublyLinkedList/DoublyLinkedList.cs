@@ -238,6 +238,7 @@ namespace DSAExcel.DoublyLinkedList
             stopwatch.Stop();
             TimeSpan loadingTime = stopwatch.Elapsed;
             Console.WriteLine("Time taken to load data to Doubly LinkedList: {0} seconds", loadingTime.TotalSeconds);
+            Console.WriteLine();
 
             stopwatch = Stopwatch.StartNew();
             BubbleSort();
@@ -259,12 +260,14 @@ namespace DSAExcel.DoublyLinkedList
             stopwatch.Stop();
             TimeSpan mergeSortTime = stopwatch.Elapsed;
             Console.WriteLine("Time Taken to MergeSort DoublyLinkedList: {0} seconds", mergeSortTime.TotalSeconds);
+            Console.WriteLine();
 
             stopwatch = Stopwatch.StartNew();
             InsertionSort(head);
             stopwatch.Stop();
             TimeSpan insertionSortTime = stopwatch.Elapsed;
             Console.WriteLine("Time Taken to InsertionSort DoublyLinkedList: {0} seconds", insertionSortTime.TotalSeconds);
+            Console.WriteLine("-----------------------------------------------------------------------------------");
         }
     }
 }

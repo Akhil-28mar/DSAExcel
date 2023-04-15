@@ -143,7 +143,6 @@ namespace DSAExcel.Array
 
         internal void CalculateAndDisplaySortTime()
         {
-            Console.WriteLine();
             Stopwatch stopwatch;
 
             stopwatch = Stopwatch.StartNew();
@@ -151,6 +150,7 @@ namespace DSAExcel.Array
             stopwatch.Stop();
             TimeSpan loadingTime = stopwatch.Elapsed;
             Console.WriteLine("Time taken to load data to Array: {0} seconds", loadingTime.TotalSeconds);
+            Console.WriteLine();
 
             stopwatch = Stopwatch.StartNew();
             BubbleSort();
@@ -176,7 +176,7 @@ namespace DSAExcel.Array
             InsertionSort();
             TimeSpan insertionSortTime = stopwatch.Elapsed;
             Console.WriteLine("Time taken to InsertionSort array: {0} seconds", insertionSortTime.TotalSeconds);
-            Console.WriteLine();
+            Console.WriteLine("-----------------------------------------------------------------------------------");
         }
     }
 }
