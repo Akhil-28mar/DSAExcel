@@ -25,7 +25,7 @@ namespace DSAExcel.LinkedList
             }
         }
 
-        internal void LoadData()
+        private void LoadData()
         {
             List<Person> list = ExcelReader.ExcelReader.GetDataFromExcel();
             Stopwatch stopwatch = Stopwatch.StartNew();
@@ -44,7 +44,7 @@ namespace DSAExcel.LinkedList
             Stopwatch stopwatch = Stopwatch.StartNew();
             while (current != null)
             {
-                //Console.WriteLine("Id: {0}\tFirstName: {1}\tLastName: {2}\tAge: {3}\tContact: {4}\tCity: {5}\tState: {6}\n", current.data.id, current.data.firstName, current.data.firstName, current.data.age, current.data.contact, current.data.city, current.data.state);
+                Console.WriteLine("Id: {0}\tFirstName: {1}\tLastName: {2}\tAge: {3}\tContact: {4}\tCity: {5}\tState: {6}\n", current.data.id, current.data.firstName, current.data.firstName, current.data.age, current.data.contact, current.data.city, current.data.state);
                 current = current?.next;
             }
             stopwatch.Stop();
@@ -58,7 +58,7 @@ namespace DSAExcel.LinkedList
             nodeOne.data = nodeTwo.data;
             nodeTwo.data = temp;
         }
-        internal void BubbleSort() // On basis of Age
+        private void BubbleSort() // On basis of Age
         {
             LinkedListNode? current = head;
             while (current != null)
@@ -76,7 +76,7 @@ namespace DSAExcel.LinkedList
             }
         }
 
-        private void QuickSort(LinkedListNode left, LinkedListNode right)
+        private void QuickSort(LinkedListNode left, LinkedListNode right) //On basis of First Name
         {
             if (left == right)
                 return;
@@ -145,7 +145,7 @@ namespace DSAExcel.LinkedList
             }
             return result;
         }
-        private LinkedListNode MergeSort(LinkedListNode head)
+        private LinkedListNode MergeSort(LinkedListNode head) //On basis of State
         {
             if (head == null || head.next == null)
             {
@@ -191,13 +191,13 @@ namespace DSAExcel.LinkedList
             while (current != null)
             {
                 LinkedListNode next = current.next;
-                sortedInsert(current,sorted);
+                sortedInsert(current,ref sorted);
                 current = next;
             }
 
             head = sorted;
         }
-        private void sortedInsert(LinkedListNode newnode, LinkedListNode sorted)
+        private void sortedInsert(LinkedListNode newnode, ref LinkedListNode sorted)
         {
             if (sorted == null || sorted.data.firstName.CompareTo(newnode.data.firstName) >= 0)
             {
@@ -208,7 +208,6 @@ namespace DSAExcel.LinkedList
             {
                 LinkedListNode current = sorted;
 
-                /* Locate the node before the point of insertion */
                 while (current.next != null &&
                         current.next.data.firstName.CompareTo(newnode.data.firstName) < 0)
                 {
@@ -233,6 +232,12 @@ namespace DSAExcel.LinkedList
         {
             Console.WriteLine();
             Stopwatch stopwatch;
+
+            stopwatch = Stopwatch.StartNew();
+            LoadData();
+            stopwatch.Stop();
+            TimeSpan loadingTime = stopwatch.Elapsed;
+            Console.WriteLine("Time taken to load data to LinkedList: {0} seconds", loadingTime.TotalSeconds);
 
             stopwatch = Stopwatch.StartNew();
             BubbleSort();

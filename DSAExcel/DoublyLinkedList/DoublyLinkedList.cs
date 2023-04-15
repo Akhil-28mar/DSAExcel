@@ -6,13 +6,21 @@ namespace DSAExcel.DoublyLinkedList
     {
         DoublyLinkedListNode? head;
         DoublyLinkedListNode? tail;
+        private void LoadData()
+        {
+            List<Person> sheet = ExcelReader.ExcelReader.GetDataFromExcel();
+            foreach (Person data in sheet)
+            {
+                Add(data);
+            }
+        }
         internal void DisplayAllData()
         {
             DoublyLinkedListNode? current = head;
             Stopwatch stopwatch = Stopwatch.StartNew();
             while (current != null)
             {
-                //Console.WriteLine("Id: {0}\tFirstName: {1}\tLastName: {2}\tAge: {3}\tContact: {4}\tCity: {5}\tState: {6}\n", current.data.id, current.data.firstName, current.data.firstName, current.data.age, current.data.contact, current.data.city, current.data.state);
+                Console.WriteLine("Id: {0}\tFirstName: {1}\tLastName: {2}\tAge: {3}\tContact: {4}\tCity: {5}\tState: {6}\n", current.data.id, current.data.firstName, current.data.firstName, current.data.age, current.data.contact, current.data.city, current.data.state);
                 current = current.next;
             }
             stopwatch.Stop();
@@ -20,21 +28,7 @@ namespace DSAExcel.DoublyLinkedList
             Console.WriteLine("Time taken to iterate over whole DoublyLinkedList: {0}", iterationTime);
         }
 
-        internal void DisplayAllDataInReverse()
-        {
-            DoublyLinkedListNode? current = tail;
-            Stopwatch stopwatch = Stopwatch.StartNew();
-            while (current != null)
-            {
-                //Console.WriteLine("Id: {0}\tFirstName: {1}\tLastName: {2}\tAge: {3}\tContact: {4}\tCity: {5}\tState: {6}\n", current.data.id, current.data.firstName, current.data.firstName, current.data.age, current.data.contact, current.data.city, current.data.state);
-                current = current.prev;
-            }
-            stopwatch.Stop();
-            TimeSpan revIterationTime = stopwatch.Elapsed;
-            Console.WriteLine("Time taken to iterate over whole DoublyLinkedList in Reverse: {0}", revIterationTime);
-        }
-
-        internal void Push(Person data)
+        private void Add(Person data)
         {
             DoublyLinkedListNode? newNode = new DoublyLinkedListNode(data);
             if (head == null)
@@ -57,45 +51,13 @@ namespace DSAExcel.DoublyLinkedList
             }
         }
 
-        internal DoublyLinkedListNode? Pop()
-        {
-            DoublyLinkedListNode? popped = tail?.prev ?? null;
-            if(tail != null) tail.prev = popped?.prev ?? null;
-            popped.prev = tail;
-            popped.next = null;
-            return popped;
-        }
-
-        //internal void InsertionSort()
-        //{
-        //    for (int i = 1; i < arr.Length; i++)
-        //    {
-        //        Person temp = arr[i];
-        //        int prev = i - 1;
-        //        while (prev >= 0 && temp?.firstName?.CompareTo(arr[prev].firstName) > 0)
-        //        {
-        //            arr[prev + 1] = arr[prev];
-        //            prev--;
-        //        }
-        //        arr[prev + 1] = temp;
-        //    }
-        //    LinkedListNode? current = head;
-        //    while (current != null)
-        //    {
-        //        Person temp = current.data;
-        //        LinkedListNode? prev =
-
-        //        current = current.next;
-        //    }
-        //}
-
         private void Swap(DoublyLinkedListNode? nodeOne, DoublyLinkedListNode? nodeTwo)
         {
             Person temp = nodeOne.data;
             nodeOne.data = nodeTwo.data;
             nodeTwo.data = temp;
         }
-        internal void BubbleSort() // On basis of Age
+        private void BubbleSort() // On basis of Age
         {
             DoublyLinkedListNode? current = head;
             while (current != null)
@@ -113,7 +75,7 @@ namespace DSAExcel.DoublyLinkedList
             }
         }
 
-        private void QuickSort(DoublyLinkedListNode left, DoublyLinkedListNode right)
+        private void QuickSort(DoublyLinkedListNode left, DoublyLinkedListNode right) //On basis of First Name
         {
             if (left == right)
                 return;
@@ -182,7 +144,7 @@ namespace DSAExcel.DoublyLinkedList
             }
             return result;
         }
-        private DoublyLinkedListNode MergeSort(DoublyLinkedListNode head)
+        private DoublyLinkedListNode MergeSort(DoublyLinkedListNode head) //On basis of State
         {
             if (head == null || head.next == null)
             {
@@ -272,6 +234,12 @@ namespace DSAExcel.DoublyLinkedList
             Stopwatch stopwatch;
 
             stopwatch = Stopwatch.StartNew();
+            LoadData();
+            stopwatch.Stop();
+            TimeSpan loadingTime = stopwatch.Elapsed;
+            Console.WriteLine("Time taken to load data to Doubly LinkedList: {0} seconds", loadingTime.TotalSeconds);
+
+            stopwatch = Stopwatch.StartNew();
             BubbleSort();
             stopwatch.Stop();
             TimeSpan bubbleSortTime = stopwatch.Elapsed;
@@ -297,19 +265,6 @@ namespace DSAExcel.DoublyLinkedList
             stopwatch.Stop();
             TimeSpan insertionSortTime = stopwatch.Elapsed;
             Console.WriteLine("Time Taken to InsertionSort DoublyLinkedList: {0} seconds", insertionSortTime.TotalSeconds);
-        }
-
-        internal void LoadData()
-        {
-            List<Person> sheet = ExcelReader.ExcelReader.GetDataFromExcel();
-            Stopwatch stopwatch= Stopwatch.StartNew();
-            foreach(Person data in sheet)
-            {
-                Push(data);
-            }
-            stopwatch.Stop();
-            TimeSpan revIterationTime = stopwatch.Elapsed;
-            Console.WriteLine("Time taken to Load Data toD oublyLinkedList: {0}", revIterationTime);
         }
     }
 }

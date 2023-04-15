@@ -7,7 +7,7 @@ namespace DSAExcel.Array
         const int rows = 60000;
         internal Person[] arr = new Person[rows];
 
-        internal void LoadData()
+        private void LoadData()
         {
             int currentRow = 0;
             List<Person> sheet = ExcelReader.ExcelReader.GetDataFromExcel();
@@ -27,7 +27,7 @@ namespace DSAExcel.Array
             Stopwatch stopwatch = Stopwatch.StartNew();
             for (int i = 0; i < arr.Length; i++)
             {
-                //Console.WriteLine("Id: {0}\tFirstName: {1}\tLastName: {2}\tAge: {3}\tContact: {4}\tCity: {5}\tState: {6}\n", arr[i].id, arr[i].firstName, arr[i].lastName, arr[i].age, arr[i].contact, arr[i].city, arr[i].state);
+                Console.WriteLine("Id: {0}\tFirstName: {1}\tLastName: {2}\tAge: {3}\tContact: {4}\tCity: {5}\tState: {6}\n", arr[i].id, arr[i].firstName, arr[i].lastName, arr[i].age, arr[i].contact, arr[i].city, arr[i].state);
             }
             stopwatch.Stop();
             TimeSpan iterationTime = stopwatch.Elapsed;
@@ -144,8 +144,15 @@ namespace DSAExcel.Array
         internal void CalculateAndDisplaySortTime()
         {
             Console.WriteLine();
+            Stopwatch stopwatch;
 
-            Stopwatch stopwatch = Stopwatch.StartNew();
+            stopwatch = Stopwatch.StartNew();
+            LoadData();
+            stopwatch.Stop();
+            TimeSpan loadingTime = stopwatch.Elapsed;
+            Console.WriteLine("Time taken to load data to Array: {0} seconds", loadingTime.TotalSeconds);
+
+            stopwatch = Stopwatch.StartNew();
             BubbleSort();
             stopwatch.Stop();
             TimeSpan bubbleSortTime = stopwatch.Elapsed;
