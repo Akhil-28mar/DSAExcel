@@ -2,4 +2,5 @@
 
 ## Sort Timings
 
-![Timings](https://user-images.githubusercontent.com/53256024/232201752-d97629d8-18c6-45cb-8e3f-7bd4d0b4a46e.JPG)
+
+![Timings2](https://user-images.githubusercontent.com/53256024/232327507-20113c6e-fd67-46f0-81d9-c34018ffd473.JPG)
